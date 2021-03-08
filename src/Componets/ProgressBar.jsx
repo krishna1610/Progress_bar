@@ -6,6 +6,7 @@ class ProgressBar extends React.Component {
     this.state = {
       progress_value: 0,
     };
+    this.btnClicked = this.btnClicked.bind(this);
   }
 
   btnClicked() {
@@ -20,7 +21,7 @@ class ProgressBar extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <div className="progress my-3">
           <div
             className="progress-bar"
@@ -34,7 +35,7 @@ class ProgressBar extends React.Component {
           </div>
         </div>
         <button
-          className="btn-primary"
+          className="btn-primary mb-3"
           onClick={() => {
             this.btnClicked();
           }}
