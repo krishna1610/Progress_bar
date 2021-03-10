@@ -4,7 +4,7 @@ class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      lists: ["0", "1"],
+      lists: [],
       selectedItem: -1,
       selectedItems: [],
     };
