@@ -6,6 +6,7 @@ class ButtonToggler extends React.Component {
     this.state = {
       buttonStatus: true,
     };
+    this.btnClicked = this.btnClicked.bind(this);
   }
 
   btnClicked() {
