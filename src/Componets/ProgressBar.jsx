@@ -4,19 +4,19 @@ class ProgressBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      progress_value: 0,
+      progressValue: 0,
     };
     this.btnClicked = this.btnClicked.bind(this);
   }
 
   btnClicked() {
-    let random_value = Math.round(Math.random() * 20);
-    let newProgressValue = this.state.progress_value + random_value;
+    let randomValue = Math.round(Math.random() * 20);
+    let newProgressValue = this.state.progressValue + randomValue;
     if (newProgressValue > 100) {
       newProgressValue = 0;
     }
     console.log(newProgressValue);
-    this.setState({ progress_value: newProgressValue });
+    this.setState({ progressValue: newProgressValue });
   }
 
   render() {
@@ -26,20 +26,15 @@ class ProgressBar extends React.Component {
           <div
             className="progress-bar"
             role="progressbar"
-            style={{ width: `${this.state.progress_value}%` }}
-            aria-valuenow={this.state.progress_value}
+            style={{ width: `${this.state.progressValue}%` }}
+            aria-valuenow={this.state.progressValue}
             aria-valuemin="0"
             aria-valuemax="100"
           >
-            {`${this.state.progress_value}%`}
+            {`${this.state.progressValue}%`}
           </div>
         </div>
-        <button
-          className="btn-primary mb-3"
-          onClick={() => {
-            this.btnClicked();
-          }}
-        >
+        <button className="btn btn-primary mb-3" onClick={this.btnClicked}>
           Click me
         </button>
       </div>
