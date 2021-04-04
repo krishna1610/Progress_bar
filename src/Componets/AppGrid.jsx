@@ -1,4 +1,6 @@
 import React from "react";
+import AppGridBody from "./AppGridBody";
+import AppGridBtns from "./AppGridBtns";
 
 class AppGrid extends React.Component {
   constructor(props) {
@@ -8,6 +10,9 @@ class AppGrid extends React.Component {
       elements: [],
     };
     this.addItemAtEnd = this.addItemAtEnd.bind(this);
+    this.removeItemFromEnd = this.removeItemFromEnd.bind(this);
+    this.randomiseElements = this.randomiseElements.bind(this);
+    this.sorting = this.sorting.bind(this);
   }
   addItemAtEnd() {
     let increment = this.state.counter + 1;
@@ -43,55 +48,13 @@ class AppGrid extends React.Component {
   render() {
     return (
       <>
-        <div
-          className="btn-group my-3"
-          role="group"
-          aria-label="Basic mixed styles example"
-        >
-          <button
-            type="button"
-            className="btn btn-danger"
-            onClick={() => {
-              this.addItemAtEnd();
-            }}
-          >
-            Add
-          </button>
-          <button
-            type="button"
-            className="btn btn-warning"
-            onClick={() => {
-              this.removeItemFromEnd();
-            }}
-          >
-            Remove
-          </button>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => {
-              this.randomiseElements();
-            }}
-          >
-            Shuffle
-          </button>
-          <button
-            type="button"
-            className="btn btn-success"
-            onClick={() => {
-              this.sorting();
-            }}
-          >
-            Sort
-          </button>
-        </div>
-        <div className="container">
-          <div className="row">
-            {this.state.elements.map((element) => {
-              return <div className="col-3">{element}</div>;
-            })}
-          </div>
-        </div>
+        <AppGridBtns
+          addItemAtEnd={this.addItemAtEnd}
+          removeItemFromEnd={this.removeItemFromEnd}
+          randomiseElements={this.randomiseElements}
+          sorting={this.sorting}
+        />
+        <AppGridBody elements={this.state.elements} />
       </>
     );
   }

@@ -1,4 +1,6 @@
 import React from "react";
+import ListBtns from "./ListBtns";
+import ListItems from "./ListItems";
 
 class List extends React.Component {
   constructor(props) {
@@ -9,6 +11,8 @@ class List extends React.Component {
       selectedItems: [],
     };
     this.btnClicked = this.btnClicked.bind(this);
+    this.selectedItemChanged = this.selectedItemChanged.bind(this);
+    this.resetList = this.resetList.bind(this);
   }
 
   btnClicked() {
@@ -37,42 +41,12 @@ class List extends React.Component {
   render() {
     return (
       <div>
-        <button
-          type="button"
-          className="btn btn-primary m-3"
-          onClick={() => {
-            this.btnClicked();
-          }}
-        >
-          Add
-        </button>
-        <button
-          type="button"
-          className="btn btn-danger"
-          onClick={() => {
-            this.resetList();
-          }}
-        >
-          Reset
-        </button>
-        <div className="list-group">
-          {this.state.lists.map((item, index) => {
-            return (
-              <button
-                className={
-                  "list-group-item list-group-item-action " +
-                  (this.state.selectedItems.indexOf(index) >= 0 ? "active" : "")
-                }
-                key={index}
-                onClick={() => {
-                  this.selectedItemChanged(index);
-                }}
-              >
-                {item}
-              </button>
-            );
-          })}
-        </div>
+        <ListBtns btnClicked={this.btnClicked} resetList={this.resetList} />
+        <ListItems
+          lists={this.state.lists}
+          selectedItems={this.state.selectedItems}
+          selectedItemChanged={this.selectedItemChanged}
+        />
       </div>
     );
   }
